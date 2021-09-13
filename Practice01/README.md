@@ -8,6 +8,7 @@
 - [Установка тестируемого ПО](#installing-the-tested-software)
 - [Среда тестирования](#test-environment)
 - [Выявленные ошибки/баги](#bugs)
+- [Диаграмма вариантов использования](#use-case)
 
 ## Описание тестируемого ПО <a name="description-of-tested-software"></a>
 
@@ -142,3 +143,7 @@
 **Демонстрация:**
 
 ![Bug #4: Inverse zoom](../assets/inverse-zoom-bug.gif)
+
+## Диаграмма вариантов использования для воспроизведения багов <a name="use-case"></a>
+
+![Use case diagram](../assets/use-case.png)
