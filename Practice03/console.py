@@ -1,4 +1,4 @@
-from matrix_calculator.main import Matrix
+from matrix_calculator.main import Matrix, CooSparseMatrix
 
 
 def matrix_dimension_input(prompt="Введите размерность матриц (2 3): "):
@@ -10,8 +10,10 @@ def matrix_dimension_input(prompt="Введите размерность мат�
     except ValueError:
         raise RuntimeError('Некорекный ввод размерности')
 
+
 def matrix_input(rows, cols):
     return [[float(n) for n in input().split()] for _row in range(int(rows))]
+
 
 def print_matrix(matrix):
     for row in matrix:
@@ -19,13 +21,14 @@ def print_matrix(matrix):
             print(int(i), end=" ")
         print()
 
+
 def main():
     print("Матричный калькулятор")
 
     while True:
         print("\nДоступные операции:")
         print(
-            "1. Сложение  матриц\n2. Вычитание матриц\n3. Умножение матрицы на число\n4. Умножение матриц\n5. Транспонирование матрицы\n0. Выход")
+            "1. Сложение  матриц\n2. Вычитание матриц\n3. Умножение матрицы на число\n4. Умножение матриц\n5. Транспонирование матрицы\n6. Транспонирование матрицы с сохранением в формате COO\n0. Выход")
         choice = input("Выберете операцию: ")
 
         if choice == "1":
@@ -70,6 +73,13 @@ def main():
             matrix = Matrix(matrix_input(dimension[0], dimension[1]))
             print("Результат транспонирования:")
             print_matrix(matrix.transpose())
+
+        elif choice == "6":
+            dimension = matrix_dimension_input()
+            print("Введите данные матрицы:")
+            matrix = CooSparseMatrix(matrix_input(dimension[0], dimension[1]))
+            print("Результат транспонирования:")
+            print_matrix(matrix.transpose().to_matrix())
 
         else:
             break

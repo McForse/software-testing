@@ -109,7 +109,6 @@ class CooSparseMatrix:
     def to_matrix(self):
         matrix = [[0 for _ in range(self.__col)] for _ in range(self.__row)]
         for i in range(len(self.__rows)):
-            print(i)
             matrix[self.__rows[i]][self.__cols[i]] = self.__data[i]
 
         return matrix
