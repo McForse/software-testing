@@ -19,6 +19,7 @@ def test_sum_matrix():
         [8, 11, 11]
     ]
 
+    assert result + result == 2 * result
     assert matrix_a.sum(matrix_b) == result
     assert matrix_a + matrix_b == result
     assert matrix_b.sum(matrix_a) == result
