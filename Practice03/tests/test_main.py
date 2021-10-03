@@ -132,3 +132,60 @@ def test_transpose_matrix():
         [13]
     ]
 
+def test_incorrect_matrix_init():
+    """
+    Проверка неправильной инициализации матрицы:
+    неодинаковое число элементов в строке
+    """
+    try:
+        Matrix([
+            [1, 2],
+            [3]
+        ])
+        assert False
+    except RuntimeError:
+        assert True
+
+def test_incorrect_sum_sub_operations_matrix():
+    """
+    Проверка недопустимого сложения и вычитания матриц:
+    матрицы имеют разную размерность
+    """
+    matrix_a = Matrix([
+        [1, 2, 3]
+    ])
+
+    matrix_b = Matrix([
+        [4, 1, 5],
+        [3, 5, 4]
+    ])
+
+    try:
+        matrix_a.sum(matrix_b)
+        matrix_b + matrix_a
+        matrix_a.sub(matrix_b)
+        matrix_b - matrix_a
+        assert False
+    except RuntimeError:
+        assert True
+
+def test_incorrect_mul_matrix():
+    """
+    Проверка недопустимого умножения матриц:
+    число столбцов у первой матрицы не равно числу строк у второй
+    """
+    matrix_a = Matrix([
+        [4, 1, 2]
+    ])
+
+    matrix_b = Matrix([
+        [9, 7, 2],
+        [1, 0, 4]
+    ])
+
+    try:
+        matrix_a.mul(matrix_b)
+        matrix_a * matrix_b
+        assert False
+    except RuntimeError:
+        assert True
