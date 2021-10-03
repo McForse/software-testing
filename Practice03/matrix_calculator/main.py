@@ -75,10 +75,41 @@ class Matrix:
 class CooSparseMatrix:
 
     def __init__(self, matrix):
-        pass
+        self.__row = len(matrix)
+        self.__col = len(matrix[0])
+        for i in range(1, self.__row):
+            if self.__col != len(matrix[i]):
+                raise RuntimeError('Некорректная инициализация матрицы')
+
+        self.__rows, self.__cols, self.__data = self.to_coo(matrix)
+
+    def to_coo(self, matrix):
+        rows = []
+        cols = []
+        data = []
+
+        for i in range(self.__row):
+            for j in range(self.__col):
+                if matrix[i][j] != 0:
+                    rows.append(i)
+                    cols.append(j)
+                    data.append(matrix[i][j])
+
+        return rows, cols, data
 
     def transpose(self):
-        pass
+        tmp = self.__row
+        self.__row = self.__col
+        self.__col = tmp
+        tmp = self.__rows
+        self.__rows = self.__cols
+        self.__cols = tmp
+        return self
 
     def to_matrix(self):
-        pass
+        matrix = [[0 for _ in range(self.__col)] for _ in range(self.__row)]
+        for i in range(len(self.__rows)):
+            print(i)
+            matrix[self.__rows[i]][self.__cols[i]] = self.__data[i]
+
+        return matrix
