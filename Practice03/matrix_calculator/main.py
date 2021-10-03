@@ -70,3 +70,15 @@ class Matrix:
         else:
             other_matrix = Matrix(other).get_matrix()
         return self.__matrix == other_matrix
+
+
+class CooSparseMatrix:
+
+    def __init__(self, matrix):
+        pass
+
+    def transpose(self):
+        pass
+
+    def to_matrix(self):
+        pass

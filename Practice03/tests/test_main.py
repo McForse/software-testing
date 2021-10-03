@@ -1,4 +1,4 @@
-from matrix_calculator.main import Matrix
+from matrix_calculator.main import Matrix, CooSparseMatrix
 
 
 def test_sum_matrix():
@@ -189,3 +189,22 @@ def test_incorrect_mul_matrix():
         assert False
     except RuntimeError:
         assert True
+
+def test_transpose_coo_matrix():
+    """Проверка транспонирования разреженной матрицы (COO)"""
+
+    matrix = CooSparseMatrix([
+        [1, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+    ])
+
+    result = [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [1, 0, 0],
+    ]
+
+    assert matrix.transpose().to_matrix() == result
