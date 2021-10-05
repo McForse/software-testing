@@ -11,7 +11,7 @@ class AlgebraicOperationsTab(Frame):
         Frame.__init__(self, background=bg)
         self.result_frame = Frame(self, background=bg)
 
-        self.operation = None
+        self.operation = "Сложение"
         self.matrix_a = None
         self.matrix_b = None
         self.result_matrix = None

@@ -51,7 +51,10 @@ class MatrixInputTable(Frame):
 
     def validate(self, P):
         if P.strip() == "":
-            return False
+            return True
+
+        if P == "-":
+            return True
 
         try:
             f = float(P)
